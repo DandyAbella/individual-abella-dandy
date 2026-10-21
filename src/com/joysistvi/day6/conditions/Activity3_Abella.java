@@ -1,11 +1,12 @@
 package com.joysistvi.day6.conditions;
 
-import java.util.Scanner;
+import java.util.Scanner; //Scanner >>> programs keyboard reader /reads input from keyboard
 
 public class Activity3_Abella {
     public static void main (String[] args) {
 
-        Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);    //creating a Scanner object named sc
+                                                //System.in >> standard input stream
 
         //task 2: event entry check
         int age;
@@ -13,7 +14,7 @@ public class Activity3_Abella {
         System.out.println("");
         System.out.println("Task 2: event entry check");
         System.out.print ("Enter age: ");
-        age = sc.nextInt();
+        age = sc.nextInt(); //reads integer
         System.out.print ("Has a valid id? (yes/no): ");
         String idInput = sc.next();
         hasValidId = idInput.equalsIgnoreCase( "yes");
@@ -61,6 +62,6 @@ public class Activity3_Abella {
         System.out.println("The larger number is: " + largerNumber);
 
 
-        sc.close();
+        sc.close(); //close the scanner object
     }
 }
