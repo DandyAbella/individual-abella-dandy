@@ -1,5 +1,8 @@
 package com.joysistvi.day15.mathclass;
 import java.util.Scanner;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
 public class Activity11_Abella {
     public static void main(String[] args) {
         Scanner value = new Scanner(System.in);
@@ -62,6 +65,21 @@ public class Activity11_Abella {
         System.out.print("\nEnter a number to get the square root value: ");
         double result = value.nextDouble();
         System.out.println("the square root of " + result + " is " + Math.sqrt(result));
+
+       //random numbers...
+        Random rand = new Random();
+        Set<Integer> numbers = new HashSet<>();
+
+        // Generate 6 unique numbers from 1 to 58
+        while (numbers.size() < 6) {
+            int rannum = rand.nextInt(58) + 1; // 1 to 58
+            numbers.add(rannum); // duplicates are ignored
+        }
+
+        System.out.println("\nSelected Numbers:");
+        for (int rannum : numbers) {
+            System.out.print(rannum + " ");
+        }
 
 
 
