@@ -1,9 +1,9 @@
 package com.joysistvi.day22.inheritance;
 
-//child class / sub class
+// Child / Sub Class
 public class Cat extends Animal{
 
-    String furColor;
+    private String furColor;
 
     public Cat(String name, int age, String furColor) {
         super(name, age);
@@ -27,6 +27,6 @@ public class Cat extends Animal{
     public String toString() {
         return "Type: Cat\n"
                 + super.toString() + "\n"
-                + "Furcolor: " + furColor;
+                + "Fur Color: " + furColor;
     }
 }

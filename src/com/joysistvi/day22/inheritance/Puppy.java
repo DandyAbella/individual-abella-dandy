@@ -1,6 +1,5 @@
 package com.joysistvi.day22.inheritance;
 
-public class Puppy {
-
-
-}
+//public class Puppy extends Dog {
+//
+//}
