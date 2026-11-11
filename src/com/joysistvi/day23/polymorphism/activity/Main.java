@@ -43,7 +43,7 @@ public class Main {
         // Using child object in a Pen reference
         Pen pen4 = new Marker("Sharpie", "Green", 30.0, false);
 
-        pen4.write("Hello ");
+        pen4.write("Hello ", 5);
         pen4.write("Hello world again", 4);
     }
 }
