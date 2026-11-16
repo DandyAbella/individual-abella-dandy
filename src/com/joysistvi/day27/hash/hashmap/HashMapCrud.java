@@ -1,4 +1,4 @@
-package com.joysistvi.day27.hashmap;
+package com.joysistvi.day27.hash.hashmap;
 
 import java.util.HashMap;
 

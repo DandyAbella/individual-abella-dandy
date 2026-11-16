@@ -1,4 +1,4 @@
-package com.joysistvi.day25.activity;
+package com.joysistvi.day25.arraylist.activity;
 
 import java.util.ArrayList;
 import java.util.Scanner;

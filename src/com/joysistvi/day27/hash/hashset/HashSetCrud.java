@@ -1,4 +1,4 @@
-package com.joysistvi.day27.hashset;
+package com.joysistvi.day27.hash.hashset;
 
 import java.util.HashSet;
 import java.util.Random;
