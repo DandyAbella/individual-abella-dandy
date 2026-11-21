@@ -1,3 +1,4 @@
+import com.joysistvi.recordingstudio.LoginUser;
 import com.joysistvi.recordingstudio.RegisterUser;
 import com.joysistvi.recordingstudio.repository.UserRepository;
 import com.joysistvi.recordingstudio.repository.UserRepositoryImpl;
@@ -45,14 +46,24 @@ public class App {
                 break;
 
             case 2:
-                UserRepository userRepository = new UserRepositoryImpl();
-                UserService userService = new UserServiceImpl(userRepository);
 
                 System.out.print("User Name: ");
                 String username = sc.nextLine().trim();
 
                 System.out.print("Password: ");
                 String password = sc.nextLine().trim();
+
+                boolean correct = LoginUser.login(username, password);
+
+                if (correct) {
+                    System.out.println("Login Successful");
+
+
+                } else {
+                    System.out.println("Invalid user name or password");
+                }
+
+
 
 
                 break;
