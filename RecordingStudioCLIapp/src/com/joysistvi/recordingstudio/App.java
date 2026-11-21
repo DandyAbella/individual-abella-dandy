@@ -1,25 +1,22 @@
-import com.joysistvi.recordingstudio.repository.ArtistRepository;
-import com.joysistvi.recordingstudio.repository.ArtistRepositoryImpl;
-import com.joysistvi.recordingstudio.service.ArtistService;
-import com.joysistvi.recordingstudio.service.ArtistServiceImpl;
-import com.joysistvi.recordingstudio.view.ArtistView;
+import com.joysistvi.recordingstudio.repository.UserRepository;
+import com.joysistvi.recordingstudio.repository.UserRepositoryImpl;
+import com.joysistvi.recordingstudio.service.UserService;
+import com.joysistvi.recordingstudio.service.UserServiceImpl;
+import com.joysistvi.recordingstudio.view.UserView;
 
 public class App {
 
     public static void main(String[] args) {
 
-        ArtistRepository repository =
-                new ArtistRepositoryImpl();
+        UserRepository repository =
+                new UserRepositoryImpl();
 
-        ArtistService service =
-                new ArtistServiceImpl(repository);
+        UserService service =
+                new UserServiceImpl(repository);
 
-        ArtistView view =
-                new ArtistView(service);
+        UserView view =
+                new UserView(service);
 
-        view.displayAllArtists();
-
-        // OR test adding artist
-        // view.promptCreateArtist();
+        view.displayAllUsers();
     }
 }
