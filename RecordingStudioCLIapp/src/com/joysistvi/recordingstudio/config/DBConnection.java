@@ -1,4 +1,4 @@
-package com.joysistvi.recordingstudio;
+package com.joysistvi.recordingstudio.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

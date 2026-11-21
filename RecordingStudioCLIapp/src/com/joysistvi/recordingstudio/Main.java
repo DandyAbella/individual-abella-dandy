@@ -1,5 +1,7 @@
 package com.joysistvi.recordingstudio;
 
+import com.joysistvi.recordingstudio.config.DBConnection;
+
 import java.util.Scanner;
 
 public class Main {
