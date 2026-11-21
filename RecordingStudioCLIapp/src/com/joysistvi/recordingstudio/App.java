@@ -1,3 +1,4 @@
+import com.joysistvi.recordingstudio.RegisterUser;
 import com.joysistvi.recordingstudio.repository.UserRepository;
 import com.joysistvi.recordingstudio.repository.UserRepositoryImpl;
 import com.joysistvi.recordingstudio.service.UserService;
@@ -24,16 +25,36 @@ public class App {
         switch (choice) {
 
             case 1:
-                UserService userService = new UserServiceImpl();
+                UserRepository userRepository = new UserRepositoryImpl();
+                UserService userService = new UserServiceImpl(userRepository);
+
+                System.out.print("\nEnter full name: ");
+                String full_name = sc.nextLine();
+
+                System.out.print("Enter user name: ");
+                String user_name = sc.nextLine();
+
+                System.out.print("Enter user password: ");
+                String user_password = sc.nextLine();
+
                 userService.createUser(
-                        "Juan Dela Cruz",
-                        "juan",
-                        "password123"
+                        full_name,
+                        user_name,
+                        user_password
                 );
                 break;
 
             case 2:
-                System.out.println("login");
+                UserRepository userRepository = new UserRepositoryImpl();
+                UserService userService = new UserServiceImpl(userRepository);
+
+                System.out.print("User Name: ");
+                String username = sc.nextLine().trim();
+
+                System.out.print("Password: ");
+                String password = sc.nextLine().trim();
+
+
                 break;
 
             case 0:
