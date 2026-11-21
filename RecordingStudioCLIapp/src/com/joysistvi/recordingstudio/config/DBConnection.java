@@ -15,7 +15,7 @@ public class DBConnection {
                     ""
             );
 
-            System.out.println("Connected to mySQL >> phpMyAdmin >> user_db");
+            //System.out.println("Connected to mySQL >> phpMyAdmin >> user_db");
 
             return conn;
 
