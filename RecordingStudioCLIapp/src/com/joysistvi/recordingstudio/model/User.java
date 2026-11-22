@@ -6,6 +6,7 @@ public class User {
     private String fullName;
     private String userName;
     private String userPassword;
+    private String role;
 
     public User() {
     }
@@ -49,7 +50,17 @@ public class User {
         return userPassword;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public void setUserPassword(String userPassword) {
         this.userPassword = userPassword;
     }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
 }

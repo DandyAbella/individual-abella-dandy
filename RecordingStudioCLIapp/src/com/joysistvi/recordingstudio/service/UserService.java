@@ -10,17 +10,21 @@ public interface UserService {
     void createUser(
             String fullName,
             String userName,
-            String userPassword
+            String userPassword,
+            String role
     );
 
     void updateUser(
             int id,
             String fullName,
             String userName,
-            String userPassword
+            String userPassword,
+            String role
     );
 
     void deleteUser(int id);
 
     User findUserByUserName(String userName);
+
+    boolean login(String userName, String password);
 }

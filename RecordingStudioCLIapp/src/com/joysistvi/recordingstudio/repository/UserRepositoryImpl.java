@@ -34,6 +34,7 @@ public class UserRepositoryImpl implements UserRepository {
                 user.setFullName(rs.getString("full_name"));
                 user.setUserName(rs.getString("user_name"));
                 user.setUserPassword(rs.getString("user_password"));
+                user.setRole(rs.getString("role"));
 
                 users.add(user);
             }
@@ -50,8 +51,8 @@ public class UserRepositoryImpl implements UserRepository {
 
         String sql =
                 "INSERT INTO users " +
-                        "(full_name, user_name, user_password) " +
-                        "VALUES (?, ?, ?)";
+                        "(full_name, user_name, user_password, role) " +
+                        "VALUES (?, ?, ?, ?)";
 
         try (
                 Connection conn = DBConnection.getConnection();
@@ -62,6 +63,7 @@ public class UserRepositoryImpl implements UserRepository {
             ps.setString(1, user.getFullName());
             ps.setString(2, user.getUserName());
             ps.setString(3, user.getUserPassword());
+            ps.setString(4, user.getRole());
 
             ps.executeUpdate();
 
@@ -77,7 +79,7 @@ public class UserRepositoryImpl implements UserRepository {
 
         String sql =
                 "UPDATE users " +
-                        "SET full_name = ?, user_name = ?, user_password = ? " +
+                        "SET full_name = ?, user_name = ?, user_password = ?, role = ? " +
                         "WHERE id = ?";
 
         try (
@@ -90,6 +92,7 @@ public class UserRepositoryImpl implements UserRepository {
             ps.setString(2, user.getUserName());
             ps.setString(3, user.getUserPassword());
             ps.setInt(4, user.getId());
+            ps.setInt(5, user.getId());
 
             ps.executeUpdate();
 
@@ -148,6 +151,7 @@ public class UserRepositoryImpl implements UserRepository {
                 user.setFullName(rs.getString("full_name"));
                 user.setUserName(rs.getString("user_name"));
                 user.setUserPassword(rs.getString("user_password"));
+                user.setRole(rs.getString("role"));
 
                 return user;
             }

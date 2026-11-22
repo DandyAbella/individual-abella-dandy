@@ -126,9 +126,11 @@ public class ArtistView {
 
     public void showMenu() {
 
-        while (true) {
+        int choice;
 
-            System.out.println("\n=== ARTIST MENU ===");
+        do {
+
+            System.out.println("\n=== ARTIST MANAGEMENT ===");
             System.out.println("1. View Artists");
             System.out.println("2. Add Artist");
             System.out.println("3. Search Artist");
@@ -136,11 +138,10 @@ public class ArtistView {
             System.out.println("5. Archive Artist");
             System.out.println("6. Restore Artist");
             System.out.println("7. Delete Artist");
-            System.out.println("0. Exit");
+            System.out.println("0. Back");
 
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
 
@@ -173,12 +174,14 @@ public class ArtistView {
                     break;
 
                 case 0:
-                    return;
+                    System.out.println("Returning...");
+                    break;
 
                 default:
-                    System.out.println("Invalid choice.");
+                    System.out.println("Invalid choice");
             }
-        }
+
+        } while (choice != 0);
     }
 
 

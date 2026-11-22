@@ -132,21 +132,20 @@ public class AlbumView {
 
     public void showMenu() {
 
-        while (true) {
+        int choice;
 
-            System.out.println("\n=== ALBUM MENU ===");
+        do {
+
+            System.out.println("\n=== ALBUM MANAGEMENT ===");
             System.out.println("1. View Albums");
             System.out.println("2. Add Album");
             System.out.println("3. Search Album");
             System.out.println("4. Update Album");
-            System.out.println("5. Archive Album");
-            System.out.println("6. Restore Album");
-            System.out.println("7. Delete Album");
-            System.out.println("0. Exit");
+            System.out.println("5. Delete Album");
+            System.out.println("0. Back");
 
             System.out.print("Choice: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            choice = Integer.parseInt(scanner.nextLine());
 
             switch (choice) {
 
@@ -167,23 +166,18 @@ public class AlbumView {
                     break;
 
                 case 5:
-                    promptArchiveAlbum();
-                    break;
-
-                case 6:
-                    promptRestoreAlbum();
-                    break;
-
-                case 7:
                     promptDeleteAlbum();
                     break;
 
                 case 0:
-                    return;
+                    break;
 
                 default:
-                    System.out.println("Invalid choice.");
+                    System.out.println("Invalid choice");
             }
-        }
+
+        } while (choice != 0);
     }
+
+
 }
