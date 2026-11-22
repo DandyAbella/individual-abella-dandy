@@ -35,20 +35,28 @@ public class ArtistView {
 
     public void displayAllArtists() {
 
+
         System.out.println("\n=== ARTISTS ===");
+
+        System.out.printf("%-5s | %-25s | %-20s | %-15s%n",
+                "ID",
+                "ARTIST NAME",
+                "GENRE",
+                "COUNTRY"
+        );
+
+        System.out.println("--------------------------------------------------------------------------");
 
         for (Artist artist : service.getAllActiveArtists()) {
 
-            System.out.println(
-                    artist.getArtistId()
-                            + " | "
-                            + artist.getArtistName()
-                            + " | "
-                            + artist.getGenre()
-                            + " | "
-                            + artist.getCountry()
+            System.out.printf("%-5d | %-25s | %-20s | %-15s%n",
+                    artist.getArtistId(),
+                    artist.getArtistName(),
+                    artist.getGenre(),
+                    artist.getCountry()
             );
         }
+
     }
     public void promptSearchArtists() {
 

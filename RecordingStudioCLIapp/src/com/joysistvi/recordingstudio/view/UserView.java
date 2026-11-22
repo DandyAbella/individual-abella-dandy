@@ -94,6 +94,34 @@ public class UserView {
         }
     }
 
+    private int getValidChoice(int... validChoices) {
+
+        while (true) {
+
+            System.out.print("Choice: ");
+            String input = scanner.nextLine().trim();
+
+            try {
+                int choice = Integer.parseInt(input);
+
+                for (int validChoice : validChoices) {
+
+                    if (choice == validChoice) {
+                        return choice;
+                    }
+                }
+
+                System.out.println("Invalid option! Choose an option from the menu.");
+
+            } catch (NumberFormatException e) {
+
+                System.out.println("Invalid input! Enter numbers only.");
+            }
+
+            System.out.println("Please try again.\n");
+        }
+    }
+
     public void showMenu() {
 
         int choice;
@@ -108,8 +136,7 @@ public class UserView {
             System.out.println("5. Playlist Management");
             System.out.println("0. Exit");
 
-            System.out.print("Choice: ");
-            choice = Integer.parseInt(scanner.nextLine());
+            choice = getValidChoice(0, 1, 2, 3, 4, 5);
 
             switch (choice) {
 
@@ -203,15 +230,33 @@ public class UserView {
             System.out.println("5. Delete User");
             System.out.println("0. Back");
 
-            System.out.print("Choice: ");
-
-            choice =
-                    Integer.parseInt(scanner.nextLine());
+            choice = getValidChoice(0, 1, 2, 3, 4, 5);
 
             switch (choice) {
 
                 case 1:
-                    displayAllUsers();
+
+                    System.out.println("\n=== USERS ===");
+
+                    System.out.printf("%-5s | %-25s | %-15s | %-12s%n",
+                            "ID",
+                            "NAME",
+                            "USERNAME",
+                            "ROLE"
+                    );
+
+                    System.out.println("----------------------------------------------------------------");
+
+                    for (User user : service.getAllUsers()) {
+
+                        System.out.printf("%-5d | %-25s | %-15s | %-12s%n",
+                                user.getId(),
+                                user.getFullName(),
+                                user.getUserName(),
+                                user.getRole()
+                        );
+                    }
+
                     break;
 
                 case 2:

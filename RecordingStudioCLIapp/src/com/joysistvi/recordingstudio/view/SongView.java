@@ -62,19 +62,22 @@ public class SongView {
     public void displayAllSongs() {
 
         System.out.println("\n=== SONGS ===");
+        System.out.printf("%-5s | %-25s | %-12s | %-10s | %-10s%n",
+                "ID",
+                "TITLE",
+                "ARTIST ID",
+                "ALBUM ID",
+                "DURATION"
+        );
+
 
         for (Song song : service.getAllSongs()) {
 
-            System.out.println(
-                    song.getSongId()
-                            + " | "
-                            + song.getSongTitle()
-                            + " | Artist ID: "
-                            + song.getArtistId()
-                            + " | Album ID: "
-                            + song.getAlbumId()
-                            + " | Duration: "
-                            + song.getDuration()
+            System.out.printf("%-5d | %-25s | %-12d | %-10d | %-10s%n",                    song.getSongId(),
+                    song.getSongTitle(),
+                    song.getArtistId(),
+                    song.getAlbumId(),
+                    song.getDuration()
             );
         }
     }

@@ -18,20 +18,30 @@ public class AlbumView {
 
     public void displayAllAlbums() {
 
+
         System.out.println("\n=== ALBUMS ===");
+
+        System.out.printf("%-5s | %-25s | %-15s | %-15s | %-12s%n",
+                "ID",
+                "Title",
+                "Artist",
+                "Release Year",
+                "is_archived"
+        );
+
+        System.out.println("--------------------------------------------------------------------------------");
 
         for (Album album : service.getAllActiveAlbums()) {
 
-            System.out.println(
-                    album.getAlbumId()
-                            + " | "
-                            + album.getAlbumName()
-                            + " | "
-                            + album.getYear()
-                            + " | "
-                            + album.getArtistName()
+            System.out.printf("%-5d | %-25s | %-15s | %-15d | %-12b%n",
+                    album.getAlbumId(),
+                    album.getAlbumName(),
+                    album.getArtistName(),
+                    album.getYear(),
+                    album.isArchived()
             );
         }
+
     }
 
     public void promptCreateAlbum() {
