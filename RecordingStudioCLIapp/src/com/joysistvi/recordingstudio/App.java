@@ -1,13 +1,32 @@
 package com.joysistvi.recordingstudio;
 
-import com.joysistvi.recordingstudio.LoginUser;
-import com.joysistvi.recordingstudio.RegisterUser;
 import com.joysistvi.recordingstudio.repository.UserRepository;
 import com.joysistvi.recordingstudio.repository.UserRepositoryImpl;
 import com.joysistvi.recordingstudio.service.UserService;
 import com.joysistvi.recordingstudio.service.UserServiceImpl;
 import com.joysistvi.recordingstudio.view.UserView;
 import com.joysistvi.recordingstudio.model.User;
+import com.joysistvi.recordingstudio.repository.ArtistRepositoryImpl;
+import com.joysistvi.recordingstudio.repository.AlbumRepositoryImpl;
+import com.joysistvi.recordingstudio.repository.SongRepositoryImpl;
+import com.joysistvi.recordingstudio.repository.PlaylistRepositoryImpl;
+
+import com.joysistvi.recordingstudio.service.ArtistService;
+import com.joysistvi.recordingstudio.service.ArtistServiceImpl;
+
+import com.joysistvi.recordingstudio.service.AlbumService;
+import com.joysistvi.recordingstudio.service.AlbumServiceImpl;
+
+import com.joysistvi.recordingstudio.service.SongService;
+import com.joysistvi.recordingstudio.service.SongServiceImpl;
+
+import com.joysistvi.recordingstudio.service.PlaylistService;
+import com.joysistvi.recordingstudio.service.PlaylistServiceImpl;
+
+import com.joysistvi.recordingstudio.view.ArtistView;
+import com.joysistvi.recordingstudio.view.AlbumView;
+import com.joysistvi.recordingstudio.view.SongView;
+import com.joysistvi.recordingstudio.view.PlaylistView;
 
 
 import java.util.Scanner;
@@ -133,8 +152,75 @@ public class App {
 
             System.out.print("Choice: ");
 
-            choice =
-                    Integer.parseInt(sc.nextLine());
+            choice = Integer.parseInt(sc.nextLine());
+
+            switch (choice) {
+
+                case 1:
+
+                    ArtistService artistService =
+                            new ArtistServiceImpl(
+                                    new ArtistRepositoryImpl()
+                            );
+
+                    ArtistView artistView =
+                            new ArtistView(artistService);
+
+                    artistView.displayAllArtists();
+
+                    break;
+
+                case 2:
+
+                    AlbumService albumService =
+                            new AlbumServiceImpl(
+                                    new AlbumRepositoryImpl()
+                            );
+
+                    AlbumView albumView =
+                            new AlbumView(albumService);
+
+                    albumView.displayAllAlbums();
+
+                    break;
+
+                case 3:
+
+                    SongService songService =
+                            new SongServiceImpl(
+                                    new SongRepositoryImpl()
+                            );
+
+                    SongView songView =
+                            new SongView(songService);
+
+                    songView.displayAllSongs();
+
+                    break;
+
+                case 4:
+
+                    PlaylistService playlistService =
+                            new PlaylistServiceImpl(
+                                    new PlaylistRepositoryImpl()
+                            );
+
+                    PlaylistView playlistView =
+                            new PlaylistView(playlistService);
+
+                    playlistView.displayAllPlaylists();
+
+                    break;
+
+                case 0:
+
+                    System.out.println("Logging out...");
+                    break;
+
+                default:
+
+                    System.out.println("Invalid choice.");
+            }
 
         } while (choice != 0);
     }

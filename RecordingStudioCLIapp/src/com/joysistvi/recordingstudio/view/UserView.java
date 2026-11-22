@@ -274,4 +274,94 @@ public class UserView {
         service.deleteUser(id);
     }
 
+    private static void showUserMenu() {
+
+        Scanner sc = new Scanner(System.in);
+
+        int choice;
+
+        do {
+
+            System.out.println("\n=== USER MENU ===");
+            System.out.println("1. View Artists");
+            System.out.println("2. View Albums");
+            System.out.println("3. View Songs");
+            System.out.println("4. View Playlists");
+            System.out.println("0. Logout");
+
+            System.out.print("Choice: ");
+
+            choice = Integer.parseInt(sc.nextLine());
+
+            switch (choice) {
+
+                case 1:
+
+                    ArtistService artistService =
+                            new ArtistServiceImpl(
+                                    new ArtistRepositoryImpl()
+                            );
+
+                    ArtistView artistView =
+                            new ArtistView(artistService);
+
+                    artistView.displayAllArtists();
+
+                    break;
+
+                case 2:
+
+                    AlbumService albumService =
+                            new AlbumServiceImpl(
+                                    new AlbumRepositoryImpl()
+                            );
+
+                    AlbumView albumView =
+                            new AlbumView(albumService);
+
+                    albumView.displayAllAlbums();
+
+                    break;
+
+                case 3:
+
+                    SongService songService =
+                            new SongServiceImpl(
+                                    new SongRepositoryImpl()
+                            );
+
+                    SongView songView =
+                            new SongView(songService);
+
+                    songView.displayAllSongs();
+
+                    break;
+
+                case 4:
+
+                    PlaylistService playlistService =
+                            new PlaylistServiceImpl(
+                                    new PlaylistRepositoryImpl()
+                            );
+
+                    PlaylistView playlistView =
+                            new PlaylistView(playlistService);
+
+                    playlistView.displayAllPlaylists();
+
+                    break;
+
+                case 0:
+
+                    System.out.println("Logging out...");
+                    break;
+
+                default:
+
+                    System.out.println("Invalid choice.");
+            }
+
+        } while (choice != 0);
+    }
+
 }
