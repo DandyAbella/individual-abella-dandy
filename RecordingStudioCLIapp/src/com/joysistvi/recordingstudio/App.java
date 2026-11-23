@@ -21,6 +21,7 @@ import com.joysistvi.recordingstudio.service.SongServiceImpl;
 import com.joysistvi.recordingstudio.service.UserService;
 import com.joysistvi.recordingstudio.service.UserServiceImpl;
 
+import com.joysistvi.recordingstudio.util.ClearScreen;
 import com.joysistvi.recordingstudio.view.AlbumView;
 import com.joysistvi.recordingstudio.view.ArtistView;
 import com.joysistvi.recordingstudio.view.PlaylistView;
@@ -49,6 +50,8 @@ public class App {
 
             case 1:
 
+                ClearScreen.clearScreen();
+
                 System.out.print("\nEnter full name: ");
                 String full_name = sc.nextLine();
 
@@ -72,6 +75,8 @@ public class App {
 
 
             case 2:
+
+                ClearScreen.clearScreen();
 
                 System.out.println("\n=== LOGIN ===");
 
@@ -104,6 +109,8 @@ public class App {
                 }
 
                 if (success) {
+
+                    ClearScreen.clearScreen();
 
                     User user = userService.findUserByUserName(userName);
 
