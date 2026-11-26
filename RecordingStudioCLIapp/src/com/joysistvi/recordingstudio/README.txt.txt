@@ -4,11 +4,11 @@
 
 Project Title
 -------------
-Recording Studio Management System
+Recording Studio CLI App
 
 Project Description
 -------------------
-The Recording Studio Management System is a Java console-based application
+The Recording Studio CLI App System is a Java console-based application
 designed to manage recording studio operations. It allows administrators
 to manage artists, albums, songs, playlists, and users through a menu-driven
 interface connected to a MySQL database.
