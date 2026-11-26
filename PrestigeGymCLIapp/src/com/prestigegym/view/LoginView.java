@@ -17,34 +17,44 @@ public class LoginView {
 
     public static void display() {
 
-        System.out.println("===== PRESTIGE GYM =====");
+        int attempts = 0;
 
-        System.out.print("Username: ");
-        String username = scanner.nextLine();
+        while (attempts < 3) {
 
-        System.out.print("Password: ");
-        String password = scanner.nextLine();
+            System.out.println("===== PRESTIGE GYM =====");
 
-        User user =
-                userService.login(username, password);
+            System.out.print("Username: ");
+            String username = scanner.nextLine();
 
-        if(user == null){
+            System.out.print("Password: ");
+            String password = scanner.nextLine();
 
-            System.out.println("Invalid Credentials");
-            return;
+            User user = userService.login(username, password);
+
+            if (user != null) {
+
+                System.out.println("Welcome "
+                        + user.getFirstName());
+
+                System.out.println("Role: "
+                        + user.getRole());
+
+                if ("ADMIN".equalsIgnoreCase(user.getRole())) {
+                    AdminView.display();
+                }
+
+                return;
+            }
+
+            attempts++;
+
+            if (attempts < 3) {
+                System.out.println("\nInvalid Credentials.");
+                System.out.println("Try again.\n");
+            }
         }
 
-        System.out.println("Welcome "
-                + user.getFirstName());
-
-        System.out.println("Role: "
-                + user.getRole());
-
-        if(user.getRole().equals("ADMIN")){
-
-            AdminView.display();
-
-        }
-
+        System.out.println("\nMaximum login attempts reached.");
+        System.out.println("Application closing...");
     }
 }

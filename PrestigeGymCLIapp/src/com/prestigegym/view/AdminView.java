@@ -2,6 +2,7 @@ package com.prestigegym.view;
 
 import java.util.Scanner;
 import com.prestigegym.view.UserView;
+import com.prestigegym.view.MembershipPlanView;
 
 public class AdminView {
 
@@ -10,7 +11,7 @@ public class AdminView {
 
     public static void display() {
 
-        while(true){
+        while (true) {
 
             System.out.println();
             System.out.println("===== ADMIN MENU =====");
@@ -20,17 +21,16 @@ public class AdminView {
             System.out.println("4. Activities");
             System.out.println("5. Logout");
 
-            System.out.print("Choice: ");
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = getChoice();
 
-            switch(choice){
+            switch (choice) {
 
                 case 1:
                     UserView.display();
                     break;
 
                 case 2:
-                    System.out.println("Membership Plans");
+                    MembershipPlanView.display();
                     break;
 
                 case 3:
@@ -49,4 +49,32 @@ public class AdminView {
             }
         }
     }
+
+    private static int getChoice() {
+
+        while (true) {
+
+            System.out.print("Choice: ");
+
+            try {
+
+                int choice =
+                        Integer.parseInt(scanner.nextLine());
+
+                if (choice >= 1 && choice <= 5) {
+                    return choice;
+                }
+
+                System.out.println(
+                        "Invalid option. Please enter 1-5.");
+
+            } catch (NumberFormatException e) {
+
+                System.out.println(
+                        "Invalid input. Please enter a number.");
+            }
+        }
+    }
+
+
 }

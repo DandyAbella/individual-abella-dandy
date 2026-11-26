@@ -16,4 +16,12 @@ public interface UserRepository {
     void update(User user);
 
     void delete(int id);
+
+    void archive(int id);
+
+    List<User> findArchivedUsers();
+
+    void restore(int id);
+
+
 }

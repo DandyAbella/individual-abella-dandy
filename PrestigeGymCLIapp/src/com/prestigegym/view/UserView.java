@@ -23,12 +23,11 @@ public class UserView {
             System.out.println("2. View Users");
             System.out.println("3. Update User");
             System.out.println("4. Archive User");
-            System.out.println("5. Back");
+            System.out.println("5. View Archived Users");
+            System.out.println("6. Restore User");
+            System.out.println("7. Back");
 
-            System.out.print("Choice: ");
-
-            int choice =
-                    Integer.parseInt(scanner.nextLine());
+            int choice = getChoice();
 
             switch (choice) {
 
@@ -84,14 +83,97 @@ public class UserView {
                     break;
 
                 case 3:
-                    System.out.println("Update User");
+
+                    System.out.print("Enter User ID: ");
+                    int id =
+                            Integer.parseInt(scanner.nextLine());
+
+                    User userToUpdate =
+                            userService.findById(id);
+
+                    if (userToUpdate == null) {
+
+                        System.out.println("User not found.");
+                        break;
+                    }
+
+                    System.out.print("First Name: ");
+                    userToUpdate.setFirstName(
+                            scanner.nextLine());
+
+                    System.out.print("Last Name: ");
+                    userToUpdate.setLastName(
+                            scanner.nextLine());
+
+                    System.out.print("Username: ");
+                    userToUpdate.setUsername(
+                            scanner.nextLine());
+
+                    System.out.print("Email: ");
+                    userToUpdate.setEmail(
+                            scanner.nextLine());
+
+                    System.out.print(
+                            "Role (ADMIN/INSTRUCTOR/MEMBER): ");
+
+                    userToUpdate.setRole(
+                            scanner.nextLine().toUpperCase());
+
+                    userService.updateUser(
+                            userToUpdate);
+
                     break;
 
                 case 4:
-                    System.out.println("Archive User");
+
+                    System.out.print(
+                            "Enter User ID to archive: ");
+
+                    int userId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    userService.archiveUser(userId);
+
                     break;
 
                 case 5:
+
+                    List<User> archivedUsers =
+                            userService.getArchivedUsers();
+
+                    System.out.println();
+                    System.out.println("===== ARCHIVED USERS =====");
+
+                    for (User userRecord : archivedUsers) {
+
+                        System.out.println(
+                                userRecord.getId()
+                                        + " | "
+                                        + userRecord.getFirstName()
+                                        + " "
+                                        + userRecord.getLastName()
+                                        + " | "
+                                        + userRecord.getUsername()
+                                        + " | "
+                                        + userRecord.getRole()
+                        );
+                    }
+
+                    break;
+
+                case 6:
+
+                    System.out.print(
+                            "Enter User ID to restore: ");
+
+                    int restoreId =
+                            Integer.parseInt(scanner.nextLine());
+
+                    userService.restoreUser(restoreId);
+
+                    break;
+
+                case 7:
                     return;
 
                 default:
@@ -103,4 +185,31 @@ public class UserView {
     private static final UserService userService =
             new UserServiceImpl();
 
+    private static int getChoice() {
+
+        while (true) {
+
+            System.out.print("Choice: ");
+
+            try {
+
+                int choice =
+                        Integer.parseInt(scanner.nextLine());
+
+                if (choice >= 1 && choice <= 7) {
+                    return choice;
+                }
+
+                System.out.println(
+                        "Invalid option. Please enter 1-5.");
+
+            } catch (NumberFormatException e) {
+
+                System.out.println(
+                        "Invalid input. Please enter a number.");
+            }
+        }
+    }
+
 }
+

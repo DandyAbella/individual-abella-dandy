@@ -10,4 +10,15 @@ public interface UserService {
     void saveUser(User user);
 
     List<User> getAllUsers();
+
+    User findById(int id);
+
+    void updateUser(User user);
+
+    void archiveUser(int id);
+
+    List<User> getArchivedUsers();
+
+    void restoreUser(int id);
+
 }
