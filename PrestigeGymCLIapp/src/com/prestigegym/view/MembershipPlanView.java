@@ -61,7 +61,7 @@ public class MembershipPlanView {
                     break;
 
                 case "3":
-                    System.out.println("Update Plan");
+                    updatePlan();
                     break;
 
                 case "4":
@@ -80,5 +80,35 @@ public class MembershipPlanView {
     private static final MembershipPlanService
             membershipPlanService =
             new MembershipPlanServiceImpl();
+
+    private static void updatePlan() {
+
+        System.out.print("Enter Plan ID: ");
+        int id = Integer.parseInt(scanner.nextLine());
+
+        MembershipPlan plan = membershipPlanService.getPlanById(id);
+
+        if (plan == null) {
+            System.out.println("Plan not found.");
+            return;
+        }
+
+        System.out.print("New Plan Name: ");
+        plan.setPlanName(scanner.nextLine());
+
+        System.out.print("New Duration Months: ");
+        plan.setDurationMonths(
+                Integer.parseInt(scanner.nextLine())
+        );
+
+        System.out.print("New Price: ");
+        plan.setPrice(
+                Double.parseDouble(scanner.nextLine())
+        );
+
+        membershipPlanService.updatePlan(plan);
+
+        System.out.println("Plan updated successfully.");
+    }
 
 }

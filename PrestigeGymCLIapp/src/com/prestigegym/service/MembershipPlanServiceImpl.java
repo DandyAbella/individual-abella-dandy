@@ -15,4 +15,16 @@ public class MembershipPlanServiceImpl
     public List<MembershipPlan> getAllPlans() {
         return repository.findAll();
     }
+
+    @Override
+    public MembershipPlan getPlanById(int id) {
+        return repository.findById(id);
+    }
+
+    @Override
+    public void updatePlan(MembershipPlan plan) {
+        repository.update(plan);
+    }
+
+
 }

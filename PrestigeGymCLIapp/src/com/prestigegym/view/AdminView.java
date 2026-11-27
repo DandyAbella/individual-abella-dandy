@@ -3,6 +3,10 @@ package com.prestigegym.view;
 import java.util.Scanner;
 import com.prestigegym.view.UserView;
 import com.prestigegym.view.MembershipPlanView;
+import com.prestigegym.view.MemberView;
+import com.prestigegym.view.MembershipView;
+import com.prestigegym.view.AttendanceView;
+import com.prestigegym.view.PaymentView;
 
 public class AdminView {
 
@@ -17,9 +21,12 @@ public class AdminView {
             System.out.println("===== ADMIN MENU =====");
             System.out.println("1. User Management");
             System.out.println("2. Membership Plans");
-            System.out.println("3. Fitness Categories");
-            System.out.println("4. Activities");
-            System.out.println("5. Logout");
+            System.out.println("3. Member Management");
+            System.out.println("4. Membership Registration");
+            System.out.println("5. Attendance Tracking");
+            System.out.println("6. Payment Management");
+            System.out.println("7. Dashboard");
+            System.out.println("8. Logout");
 
             int choice = getChoice();
 
@@ -34,14 +41,26 @@ public class AdminView {
                     break;
 
                 case 3:
-                    System.out.println("Fitness Categories");
+                    MemberView.display();
                     break;
 
                 case 4:
-                    System.out.println("Activities");
+                    MembershipView.display();
                     break;
 
                 case 5:
+                    AttendanceView.display();
+                    break;
+
+                case 6:
+                    PaymentView.display();
+                    break;
+
+                case 7:
+                    DashboardView.display();
+                    break;
+
+                case 8:
                     return;
 
                 default:
@@ -61,7 +80,7 @@ public class AdminView {
                 int choice =
                         Integer.parseInt(scanner.nextLine());
 
-                if (choice >= 1 && choice <= 5) {
+                if (choice >= 1 && choice <= 6) {
                     return choice;
                 }
 
